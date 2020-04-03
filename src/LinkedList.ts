@@ -64,6 +64,22 @@ export class LinkedList<T> {
     return vertex.value;
   }
 
+  public search(value: T): number {
+    if (!this.head) return -1;
+
+    let index = 0;
+    let now = this.head;
+
+    while (now) {
+      if (now.value === value) return index;
+      if (!now.next) break;
+      now = now.next;
+      index++;
+    }
+
+    return -1;
+  }
+
   public insert(value: T, index: number, direction?: direction) {
     if (index > this.internalSize - 1 || index < 0)
       throw new Error(`Wrong Index : ${index}`);
