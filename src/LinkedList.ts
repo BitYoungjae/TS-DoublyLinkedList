@@ -113,6 +113,15 @@ export class LinkedList<T> {
     return result;
   }
 
+  public swap(firstIndex: number, secondIndex: number) {
+    const firstVertex = this.getVertex(firstIndex);
+    const secondVertex = this.getVertex(secondIndex);
+
+    const temp = firstVertex.value;
+    firstVertex.value = secondVertex.value;
+    secondVertex.value = temp;
+  }
+
   public *[Symbol.iterator](): Generator<T> {
     let index = 0;
     let nowVertex: Vertex<T>;
