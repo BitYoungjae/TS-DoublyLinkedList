@@ -1,22 +1,49 @@
-import { LinkedList } from './build/LinkedList.js';
+const { LinkedList } = require('./build/LinkedList');
 
-const list = new LinkedList(1, 2, 3, 4);
-list.insert(3334, 3);
-const firstTest = list.search(3334);
+const sampleArr = [1, 2, 3, 4, 5];
 
-list.insert(3432, 0, 'front');
-const secondTest = list.search(3432);
-const thirdTest = list.size;
+test('enque back or front', () => {
+  const list = new LinkedList(...sampleArr);
+  list.enqueue(30);
+  list.enqueue(35, 'front');
 
-const list2 = new LinkedList(1, 2, 3, 4);
-list2.swap(1, 3);
-const fourthTest = '' + list2.get(1) + list2.get(3);
+  const { size, head, tail } = list;
 
-console.log(
-  `
-  #1 : ${firstTest === 4}
-  #2 : ${secondTest === 0}
-  #3 : ${thirdTest === 6}
-  #4 : ${fourthTest === '42'}
-  `,
-);
+  expect(size).toBe(7);
+  expect(head.value).toBe(35);
+  expect(tail.value).toBe(30);
+});
+
+test('insert test', () => {
+  const list = new LinkedList(...sampleArr);
+  list.insert(35, 0);
+  list.insert(45, list.size - 1, 'front');
+
+  const { size, head, tail } = list;
+
+  expect(size).toBe(7);
+  expect(head.value).toBe(1);
+  expect(tail.value).toBe(5);
+  expect(list.get(1)).toBe(35);
+  expect(list.get(list.size - 2)).toBe(45);
+});
+
+test('swap value', () => {
+  const list = new LinkedList(...sampleArr);
+  list.enqueue(30);
+  list.enqueue(35, 'front');
+
+  list.swap(0, list.size - 1);
+
+  const value1 = list.get(1);
+  const value4 = list.get(4);
+  list.swap(1, 4);
+
+  const { size, head, tail } = list;
+
+  expect(size).toBe(7);
+  expect(head.value).toBe(30);
+  expect(tail.value).toBe(35);
+  expect(list.get(1)).toBe(value4);
+  expect(list.get(4)).toBe(value1);
+});

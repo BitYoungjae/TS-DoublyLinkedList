@@ -5,16 +5,17 @@
   "main": "./build/LinkedList.js",
   "scripts": {
     "start:build": "tsc -w",
-    "start:test": "nodemon ./test.js",
-    "start": "concurrently npm:start:*"
+    "start:test": "jest",
+    "start": "concurrently npm:start:*",
+    "test": "jest"
   },
   "keywords": [],
   "author": "bityoungjae@gmail.com",
   "license": "ISC",
   "dependencies": {},
-  "type": "module",
   "devDependencies": {
     "concurrently": "^5.1.0",
+    "jest": "^25.2.7",
     "nodemon": "^2.0.2",
     "typescript": "^3.8.3"
   }
