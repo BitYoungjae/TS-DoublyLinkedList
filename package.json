@@ -5,7 +5,7 @@
   "main": "./build/LinkedList.js",
   "scripts": {
     "start:build": "tsc -w",
-    "start:run": "nodemon ./build",
+    "start:test": "nodemon ./test.js",
     "start": "concurrently npm:start:*"
   },
   "keywords": [],
