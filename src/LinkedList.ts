@@ -55,7 +55,7 @@ export class LinkedList<T> {
       case 'front':
         return this.dequeueFromHead();
       default:
-        return this.dequeueFromTail();
+        return this.dequeueFromHead();
     }
   }
 
